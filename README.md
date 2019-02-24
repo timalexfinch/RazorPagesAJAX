@@ -10,5 +10,7 @@ Then there's a couple of AJAX POST examples at the bottom of the home page.<br /
 If you click the PartialDemo link there's an eg of a partial page (no AJAX)
 <br />
 Finally, if you click the Products link, eventually, I'll write a data-driven Razor Page with AJAX.<br />
-Currently, it's just a data-driven page, with paging and sorting, but no AJAX<br />
+Currently, it's just a data-driven page, with paging and sorting<br />
+The paging is done manually, with Skip and Take<br />
+I haven't worked out how to do AJAX with data yet<br />
 It has no partial page either. <br />
