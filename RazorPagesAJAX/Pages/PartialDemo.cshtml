@@ -1,0 +1,17 @@
+﻿@page
+@model RazorPagesAJAX.Pages.PartialDemoModel
+@{
+    ViewData["Title"] = "PartialDemo";
+}
+
+<h1>PartialDemo</h1>
+<p>
+    <br />
+    The list below is done using the following:
+    <code> &lt; name="_Partial" model="Model.Animals" / &gt;</code>
+</p>
+<p>
+    <br />
+    <partial  name="_Partial" model="Model.Animals" />
+</p>
+

@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RazorPagesAJAX.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace RazorPagesAJAX
 {
@@ -31,8 +33,15 @@ namespace RazorPagesAJAX
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // Next line added by tim finch. Required to POST AJAX requests.:
+            services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
+
+            // ConnectionString below added by tim finch. Required 2 usings
+
+            // This is the code required if the connection string is in appsettings.json:
+           services.AddDbContext<AdventureworksLT2012Context>(options => options.UseSqlServer(Configuration.GetConnectionString("AdventureWorksLT2012")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

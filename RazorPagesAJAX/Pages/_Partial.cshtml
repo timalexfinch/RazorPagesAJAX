@@ -1,0 +1,13 @@
+﻿@model List<string>
+
+
+<div class="alert-danger">
+    <h2>This list is in a partial page:</h2>
+    <h3>List of Animals</h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item</li>
+        }
+    </ul>
+</div>

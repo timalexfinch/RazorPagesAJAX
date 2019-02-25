@@ -1,0 +1,81 @@
+﻿@page
+@model RazorPagesAJAX.Pages.Products.IndexModel
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Adventureworks Products</h1>
+<p>
+    <img class="rounded" src="~/Images/20180609_104510.jpg" height="500" width="900"/>
+</p>
+<p>
+    <a asp-page="Create">Create New Product</a>
+</p>
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.CategorySort">
+                    @Html.DisplayNameFor(model => model.Products[0].ProductCategory)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ModelSort">
+                    @Html.DisplayNameFor(model => model.Products[0].ProductModel)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.Products[0].Name)
+                </a>
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Products[0].Color)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductCategory.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductModel.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ProductId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ProductId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ProductId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.Products.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Products.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Products.PageIndex - 1)"
+   class="btn btn-default btn-outline-info @prevDisabled">
+    &lt; Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Products.PageIndex + 1)"
+   class="btn btn-default btn-outline-info @nextDisabled">
+    Next &gt;
+</a>

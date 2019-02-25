@@ -1,10 +1,71 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "AJAX";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1>Razor Pages AJAX site</h1>
+    <h2>Core 2.2</h2>
+    <h3>
+        <br />
+        An application to show how to use jQuery and AJAX to call server-side code, using Razor Pages 2.2
+        <br /><br />
+    </h3>
+    <p>
+        On this page, there are two GET examples. You can:
+        <br />
+        &bull; call our own <strong>GetTime</strong> service <br />
+        &bull; call a <strong>Get Random User</strong> service from the web
+    </p>
+
+    <p>
+        Then there's a couple of AJAX POST examples at the bottom of this page.
+    </p>
+    <p>
+        If you click the
+        <a asp-page="/PartialDemo">Partial Demo</a>
+        link there's an eg of a partial page (no AJAX)
+    </p>
+    <p>
+        Finally, if you click the
+        <a asp-page="/Products/Index">Products</a>
+        link, eventually, I'll write a data-driven Razor Page with AJAX.<br />
+        Currently, it's just a data-driven page, with paging and sorting<br />
+        The paging is done with Skip and Take<br />
+        It has no partial page either. <br />
+        I'm going to use this site:<br />
+        https://www.learnrazorpages.com/razor-pages/ajax/partial-update <br />
+        to see if I can get AJAX working
+    </p>
+    <p>
+        <br /><br />
+        <button class="btn btn-primary" id="btnGetTime">Get Server Time</button>
+        <br /><br />
+        <label id="lblTime"></label>
+    </p>
+    <hr />
+    <p>
+        <button id="btnGetRandomUser">Get Random User</button>
+    </p>
+    <p id="randomUser"></p>
+    <hr />
+    <p>
+        @Html.AntiForgeryToken()
+        <button id="btnPostNoData">An AJAX POST Demo</button>
+        <br />
+        <div id="dvPostItems">
+        </div>
+        <br />
+        <hr />
+    </p>
+
+    <p>
+        First Name: <input id="txtfirstname" value="tim" /><br /><br />
+        Last Name:  <input id="txtlastname" value="finch" /><br /><br />
+    </p>
+    <p><button id="btnPostPerson">Post a Person using AJAX</button></p>
+
+    <div id="dvPostName">
+    </div>
 </div>
